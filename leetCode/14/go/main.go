@@ -11,31 +11,25 @@ func longestCommonPrefix(strs []string) string {
 		return ""
 	}
 
-	// Find the shortest string in the array
-	minLen := len(strs[0])
-	for _, s := range strs {
-		if len(s) < minLen {
-			minLen = len(s)
-		}
-	}
-
 	// Binary search for the longest common prefix
-	low, high := 0, minLen-1
+	low, high := 0, len(strs[0])-1
 	for low <= high {
 		mid := (low + high) / 2
 		prefix := strs[0][:mid+1]
+		shortest := true
 
 		for _, s := range strs {
 			if !strings.HasPrefix(s, prefix) {
-				high = mid - 1
-				goto nextIteration
+				shortest = false
+				break
 			}
 		}
 
-		low = mid + 1
-		continue
-
-	nextIteration:
+		if shortest {
+			low = mid + 1
+		} else {
+			high = mid - 1
+		}
 	}
 
 	return strs[0][:high+1]
