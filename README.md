@@ -1,3 +1,6 @@
-This repository contains a selection of completed programming exercises sourced from leading online programming learning platforms.
+# Notes
+
+This repository contains a selection some programming exercises sourced
 
 - [leetCode](./leetCode)
+- [C](./c)
